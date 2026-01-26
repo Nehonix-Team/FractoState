@@ -8,9 +8,26 @@ FractoState is a high-performance, decentralized state management library for Re
 
 ## See it in Action
 
+
 <p align="center">
-  <video src="https://dll.nehonix.com/assets/FractoState/fracto_demo.mp4" width="100%" controls autoplay loop muted></video>
+  <video
+    src="https://dll.nehonix.com/assets/FractoState/fracto_demo.mp4"
+    width="100%"
+    controls
+    loop
+    muted
+  ></video>
 </p>
+
+> ⚠️ **GitHub Limitation**  
+> Autoplay is disabled on GitHub. Click the link below to view the demo video.
+
+<p align="center">
+  <a href="https://dll.nehonix.com/assets/FractoState/fracto_demo.mp4">
+    ▶️ <strong>Watch the FractoState Demo (MP4)</strong>
+  </a>
+</p>
+
 
 ## The Problem
 
