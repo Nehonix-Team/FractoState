@@ -76,7 +76,6 @@ function CartIcon() {
 
 For detailed information on the library, please refer to the modular documentation files:
 
-- [Architecture Overview](./docs/architecture.md): Deep dive into the Vault and Proxy engine.
 - [Getting Started](./docs/getting-started.md): Installation and basic setup guide.
 - [API Reference](./docs/api-reference.md): Detailed documentation of hooks and operations.
 
