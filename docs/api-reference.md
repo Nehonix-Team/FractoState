@@ -12,6 +12,16 @@ Creates a reusable definition for a state flow.
 
 Returns a `FlowDefinition<T>`.
 
+## defineDerived<T, R>(source, selector, key?)
+
+Creates a read-only computed flow derived from a source flow.
+
+- **source**: The parent `FlowDefinition`.
+- **selector**: Function `(state: T) => R` to compute the derived value.
+- **key**: Optional unique identifier.
+
+Returns a `DerivedFlowDefinition<T, R>`.
+
 ## useFlow<T>(identifier, initialValue?, options?)
 
 The primary hook to interact with the state vault.
@@ -31,6 +41,7 @@ The second element returned by `useFlow` provides powerful control:
   - **Strings**: `append()`, `prepend()`, `uppercase()`, `replace()`, `set()`.
   - **Arrays**: `push()`, `pop()`, `filter()`, `map()`, `insertAt()`, `removeAt()`, `set()`.
   - **Objects**: `merge()`, `delete()`, `set()`.
+- **actions**: Object containing custom async actions defined in `FlowOptions`.
 - **set(value | fn)**: Manually sets the entire state or applies a transformation function.
 - **undo()**: Reverts to the previous state.
 - **redo()**: Restores the previously undone state.

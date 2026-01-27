@@ -38,7 +38,7 @@ export default function Profile() {
   return (
     <div>
       <h1>User: {state.name}</h1>
-      <button onClick={() => ops.self.name.set("New Name")}>Update Name</button>
+      <button onClick={() => ops.self.name._set("New Name")}>Update Name</button>
     </div>
   );
 }
