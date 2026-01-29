@@ -10,7 +10,7 @@
     "eslint": "^9.39.2",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.26",
-    "fractostate": "^3.1.1",
+    "fractostate": "^3.1.2",
     "globals": "^16.5.0",
     "postcss": "^8.5.6",
     "react": "^19.2.3",
