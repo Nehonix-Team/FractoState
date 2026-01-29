@@ -7,7 +7,7 @@ import ProtectedRoute from "./layout/ProtectedRoute";
 import { FractoDevTools } from "fractostate/devtools";
 import "./index.css";
 
-function App() {
+function App() { 
   return (
     <BrowserRouter>
       <Routes>

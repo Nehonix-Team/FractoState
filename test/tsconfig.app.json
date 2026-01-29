@@ -8,9 +8,7 @@
     "types": ["vite/client"],
     "skipLibCheck": true,
     "paths": {
-      "fractostate": ["../src"],
-      "fractostate/plugins": ["../src/plugins"],
-      "fractostate/devtools": ["../src/devtools"]
+      
     },
 
     /* Bundler mode */
