@@ -29,8 +29,8 @@ export default function ShopPage() {
             <span className="text-brand font-bold uppercase tracking-widest text-xs px-1">
               FractoState
             </span>
-            . Zero Prop-Drilling. Zero Context Providers. Ultra-fast surgical
-            updates.
+            . No prop drilling. No context providers. No useState. Blazing-fast,
+            surgical state updates. Exactly where you need them.
           </p>
         </header>
 
