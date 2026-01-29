@@ -16,7 +16,7 @@ export default function Navbar() {
         </div>
         <span className="font-bold text-xl tracking-tight hidden sm:inline">
           FractoShop
-        </span>
+        </span> 
       </div>
 
       <div className="flex items-center gap-6">
