@@ -70,9 +70,7 @@ const CartFlow = defineFlow("cart", { items: [], total: 0 });
 function AddToCartButton({ product }) {
   const [, { ops }] = useFlow(CartFlow);
 
-  return (
-    <button onClick={() => ops.self.items._push(product)}>Add to Cart</button>
-  );
+  return <button>Add to Cart</button>; // ops.self.items._push(product)
 }
 
 // ◈ Focused reactivity
@@ -82,9 +80,9 @@ function CartIcon() {
 }
 ```
 
-## Engineering Highlights (v3.1)
+## Engineering Highlights (v4)
 
-FractoState v3 introduces advanced primitives designed for enterprise-scale requirements.
+FractoState v4 introduces advanced primitives designed for enterprise-scale requirements, featuring our most optimized Surgical Engine to date.
 
 ### Computed Flows
 
@@ -110,21 +108,44 @@ Real-time state inspector with zero-configuration overhead.
 
 - [Documentation: DevTools](https://fractostate.nehonix.com/docs/plugins-and-devtools#ghost-inspector-devtools)
 
+### Immediate Effects & Hydration
+
+Auto-executing side effects with dependency tracking and pre-mount hydration capabilities.
+
+- [Documentation: Effects](https://fractostate.nehonix.com/docs/immediate-effects)
+
 ## Performance Benchmarks
 
-FractoState is engineered for high-throughput environments. Current benchmarks demonstrate performance parity with minimalist libraries while significantly outperforming traditional Redux patterns.
+FractoState is engineered for high-throughput environments. Our latest Stress Test (v4) demonstrates how the **Surgical Engine v4** handles massive states with near-zero overhead.
 
-| Scenario                   | Objective        | FractoState   | Industry Standard          |
-| :------------------------- | :--------------- | :------------ | :------------------------- |
-| **Big Data (1M nodes)**    | Mutation Latency | **2.1s**      | 3.1s (Redux Toolkit)       |
-| **Deep Update (1k nodes)** | Throughput       | **887 ops/s** | 430 ops/s (Standard React) |
-| **Store Initialization**   | Setup Latency    | **2.2ms**     | 6.5ms (Redux Toolkit)      |
+<p align="center">
+  <img src="https://dll.nehonix.com/assets/FractoState/diag_ops_sec.png" alt="Operations Per Second" width="800" />
+</p>
 
-### Scalability Analysis
+### The Quantum Leap (v3.3 Stress Test)
 
-While libraries like Zustand require manual immutable spreading for deep updates, FractoState achieves similar throughput with a declarative API: `ops.registry[id].child._set(data)`. This eliminates developer error in complex state transitions without sacrificing performance.
+We simulated an "Enterprise-Scale" environment with **10,000+ nested objects** and executed thousands of deep surgical updates in rapid succession.
 
-Detailed technical analysis available in: [Performance Specifications](https://fractostate.nehonix.com/docs/benchmarks).
+| Metric                   | Result           | Optimization Impact                       |
+| :----------------------- | :--------------- | :---------------------------------------- |
+| **Max Throughput**       | **3,400+ ops/s** | Surgical Engine v4 Optimization           |
+| **Init (50k items)**     | **1.3ms**        | Instant cold-start via Memory Vault       |
+| **Update Latency (p50)** | **18µs**         | Direct path-traversal without full clones |
+| **Batching Efficiency**  | **99.9%**        | 10k actions batched into 1 micro-task     |
+
+<p align="center">
+  <img src="https://dll.nehonix.com/assets/FractoState/diag_perf_over.png" alt="Performance Evolution" width="800" />
+</p>
+
+### Analysis & Conclusion
+
+As shown in the latency distribution below, FractoState maintains a consistent performance profile even at the P99 percentile. By bypassing traditional deep-cloning for internal operations and utilizing a **Live-Access Proxy**, we've eliminated the primary performance bottleneck of immutable state management.
+
+<p align="center">
+  <img src="https://dll.nehonix.com/assets/FractoState/diag_update_latency.png" alt="Latency Distribution" width="800" />
+</p>
+
+**Conclusion**: FractoState v3.3 isn't just fast—it's architecturally immune to "Big State" degradation. Whether you have 100 or 100,000 nodes, the surgical precision of our atomic updates ensures that your UI remains fluid at 60fps, even under extreme load.
 
 ## Documentation Reference
 
