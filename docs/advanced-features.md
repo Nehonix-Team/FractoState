@@ -61,13 +61,14 @@ The `defineFlow` and `useFlow` functions now support 100% perfect type inference
 
 ## 7. Internal Action Orchestration (`__actions__`)
 
-You can now call actions from within other actions or auto-run effects using `ops.actions` or the proxy property `ops.self.__actions__`. This eliminates the need for external imports or redundant logic.
+You can now call defined actions from within other actions or auto-run effects using the magic proxy property `ops.self.__actions__`. This eliminates the need for external imports and allows for powerful, self-contained business logic.
 
 ```typescript
 actions: {
   notify: (msg) => (ops) => { /* ... */ },
-  error: () => (ops) => {
-    ops.actions.notify("An error occurred");
+  triggerError: () => (ops) => {
+    // Orchestrate actions internally
+    ops.self.__actions__.notify("A critical error occurred");
   }
 }
 ```

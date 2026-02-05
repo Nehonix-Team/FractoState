@@ -86,9 +86,7 @@ const LoginButton = () => {
 
 FractoState v4.1+ allows actions to call other actions defined within the same flow without external helpers. This is powerful for breaking down complex logic into reusable small actions.
 
-### Usage via `ops.actions` (Recommended)
-
-The `ops` object injected into your actions (and effects) contains an `actions` property holding all bound actions of the current flow.
+To access actions from within a flow (inside another action or an auto-run effect), use the magic `__actions__` property on the `self` proxy.
 
 ```typescript
 actions: {
@@ -97,29 +95,22 @@ actions: {
   },
 
   welcomeUser: () => (ops) => {
-    // Call another action directly
-    ops.actions.sayHello(ops.state.profile.username);
+    // 100% Type-safe internal call via proxy
+    ops.self.__actions__.sayHello(ops.state.profile.username);
   }
 }
 ```
 
-### Usage via `ops.self.__actions__`
-
-You can also access actions from anywhere in the state proxy tree using the magic `__actions__` property. This is useful if you are deep inside a proxy chain.
-
-```typescript
-ops.self.settings.notifications.__actions__.sayHello("System");
-```
-
 ## Actions in Effects
 
-Auto-run effects also have full access to your flow's actions, allowing you to trigger business logic automatically in response to lifecycle events or dependency changes.
+Auto-run effects also have full access to your flow's actions via the same `__actions__` property, allowing you to trigger business logic automatically in response to state changes.
 
 ```typescript
 effects: [
   {
     run: (ops) => {
-      ops.actions.performInitialSync();
+      // Trigger a business action on init
+      ops.self.__actions__.performInitialSync();
     },
     // deps: ...
   },
