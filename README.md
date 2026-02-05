@@ -146,8 +146,8 @@ As shown in the latency distribution below, FractoState maintains a consistent p
 </p>
 
 ## Conclusion
-FractoState v4 focuses on architectural simplicity, fine-grained updates, and predictable performance at scale. Its decoupled state model ensures consistent responsiveness across both small and large applications, making it a solid foundation for performance-critical React interfaces.
 
+FractoState v4 focuses on architectural simplicity, fine-grained updates, and predictable performance at scale. Its decoupled state model ensures consistent responsiveness across both small and large applications, making it a solid foundation for performance-critical React interfaces.
 
 ## Documentation Reference
 

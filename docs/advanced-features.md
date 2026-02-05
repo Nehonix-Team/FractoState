@@ -58,3 +58,16 @@ ops.self.system.callback("Operation successful");
 ## 6. Type-Safe Action Overloads
 
 The `defineFlow` and `useFlow` functions now support 100% perfect type inference for actions. No more `any` in your component code—everything is strictly typed from the definition to the usage.
+
+## 7. Internal Action Orchestration (`__actions__`)
+
+You can now call actions from within other actions or auto-run effects using `ops.actions` or the proxy property `ops.self.__actions__`. This eliminates the need for external imports or redundant logic.
+
+```typescript
+actions: {
+  notify: (msg) => (ops) => { /* ... */ },
+  error: () => (ops) => {
+    ops.actions.notify("An error occurred");
+  }
+}
+```
