@@ -72,3 +72,25 @@ actions: {
   }
 }
 ```
+
+## 8. Non-Hook Orchestration (`getFlow`)
+
+Access your state flows from outside the React rendering cycle. Perfect for API interceptors, logging services, or background tasks.
+
+```typescript
+const [user, { ops }] = getFlow(AuthFlow);
+
+// IMPORTANT: Use ops.state for fresh values after an update
+ops.self.lastLogin._set(Date.now());
+console.log(ops.state.lastLogin);
+```
+
+## 9. Plugin Operations (`_pluginName`)
+
+Plugins can now augment the toolbox with custom, context-aware operations. For example, the `persist` plugin adds a `_persist` object to your toolbox.
+
+- **`ops.self._persist.update()`**: Manual synchronization.
+- **`ops.self._persist.clear()`**: Wipe disk storage.
+- **`ops.self._persist.refresh()`**: Force reload from storage.
+
+These operations are discoverable via IntelliSense just like built-in methods.
